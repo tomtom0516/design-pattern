@@ -1,0 +1,19 @@
+@startuml classic builder pattern
+
+class Computer
+
+interface Builder {
+    {method} + Computer buildComputer();
+}
+
+Builder <- Client: "使用"
+
+Computer <. Builder: " 依赖"
+Builder <|..  LowCostComputerBuilder: " implements"
+Builder <|..  HighCostComputerBuilder: " implements"
+
+Note as W1
+    Client使用Builder来创建Computer
+end note
+
+@enduml
